@@ -1,8 +1,8 @@
 <script setup>
-import FilePreview from '@/src/components/FilePreview.vue'
-const { data } = await useFetch("/api/hello");
+import { store } from './src/store'
+import WaitUploadFiles from './src/components/WaitUpload.vue'
 function onFile(e) {
-    console.log(e.target.files)
+    store.addFile(e.target.files)
 }
 </script>
 
@@ -11,6 +11,10 @@ function onFile(e) {
         <input class="input" @change="onFile" multiple type="file">
         <div class="info">Drag and drop here</div>
     </div>
+    <div v-for="file in store.files">
+        <div>{{ file.file.name }}</div>
+    </div>
+    <WaitUploadFiles />
 </template>
 
 <style>
