@@ -1,6 +1,8 @@
 <script setup>
 import { store } from './src/store'
 import WaitUploadFiles from './src/components/WaitUpload.vue'
+import FileCard from './src/components/FileCard.vue'
+import ProgressBar from './src/components/ProgressBar.vue'
 function onFile(e) {
     store.addFile(e.target.files)
 }
@@ -11,17 +13,17 @@ function onFile(e) {
         <input class="input" @change="onFile" multiple type="file">
         <div class="info">Drag and drop here</div>
     </div>
-    <div v-for="file in store.files">
-        <div>{{ file.file.name }}</div>
+    <div v-for="fileItem in store.files">
+        <FileCard :name="fileItem.name" :status="fileItem.status" :upload-progress="fileItem.uploadProgress"
+            :id="fileItem.id" />
     </div>
-    <WaitUploadFiles />
 </template>
 
 <style>
 .container {
     position: relative;
     min-width: 100px;
-    width: 30vw;
+    width: 40vw;
     display: flex;
     justify-content: center;
     align-items: center;
