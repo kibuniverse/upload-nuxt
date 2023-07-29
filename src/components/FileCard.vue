@@ -68,7 +68,8 @@ function onPause() {
                 <div class="dot" :style="{ backgroundColor: statusInfo?.color }"></div>
                 <span>{{ statusInfo?.text }}</span>
             </div>
-            <button class="btn" v-if="showBtn" @click="onClick">{{ btnText }}</button>
+            <button class="button" v-if="showBtn" @click="onClick">
+                <span>{{ btnText }}</span></button>
         </div>
     </div>
 </template>
@@ -82,6 +83,46 @@ function onPause() {
     align-items: center;
     border-bottom: 1px solid #d6cccc;
     margin-bottom: 8px;
+}
+
+.button {
+    display: inline-block;
+    text-align: center;
+    transition: all 0.5s;
+    margin: 5px;
+    width: 80px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid #d6cccc;
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.button span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.button span:after {
+    content: '»';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -10px;
+    transition: 0.5s;
+}
+
+.button:hover span {
+    padding-right: 10px;
+}
+
+.button:hover span:after {
+    opacity: 1;
+    right: 0;
 }
 
 .card-item .left {
@@ -110,21 +151,6 @@ function onPause() {
     height: 8px;
     border-radius: 50%;
     margin-right: 8px;
-}
-
-.right .btn {
-    width: 80px;
-    height: 30px;
-    border-radius: 4px;
-    border: 1px solid #d6cccc;
-    background-color: #fff;
-    color: #000;
-    cursor: pointer;
-    margin-top: 8px;
-}
-
-.right .btn:hover {
-    color: gray
 }
 
 .name {

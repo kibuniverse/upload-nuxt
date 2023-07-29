@@ -17,11 +17,13 @@ export type FileItem = {
 export type FileCardProps = Omit<FileItem, "file">;
 export type Store = {
   files: Array<FileItem>;
+  selectShowStatus?: FileStatus;
   finishFile: (i: number) => void;
   addFile: (files: File | FileList) => void;
   updateFileUploadProgress: (i: number, progress: number) => void;
   uploadFile: (id: string | Array<string>) => void;
   pauseFile: (id: string | Array<string>) => void;
+  updateSelectShowStatus: (status?: FileStatus) => void;
 };
 let i = 0;
 function genId() {
@@ -86,5 +88,8 @@ export const store = reactive<Store>({
         file.status = FileStatus.Pause;
       }
     }
+  },
+  updateSelectShowStatus(status) {
+    this.selectShowStatus = status;
   },
 });

@@ -2,7 +2,13 @@
 import { store } from './src/store'
 import WaitUploadFiles from './src/components/WaitUpload.vue'
 import FileCard from './src/components/FileCard.vue'
+import Tab from './src/components/Tab.vue'
 import ProgressBar from './src/components/ProgressBar.vue'
+
+
+const filteredFiles = computed(() => {
+    return store.files.filter(file => !store.selectShowStatus || file.status === store.selectShowStatus)
+})
 function onFile(e) {
     store.addFile(e.target.files)
 }
@@ -13,7 +19,8 @@ function onFile(e) {
         <input class="input" @change="onFile" multiple type="file">
         <div class="info">Drag and drop here</div>
     </div>
-    <div v-for="fileItem in store.files">
+    <Tab />
+    <div v-for="fileItem in filteredFiles">
         <FileCard :name="fileItem.name" :status="fileItem.status" :upload-progress="fileItem.uploadProgress"
             :id="fileItem.id" />
     </div>
