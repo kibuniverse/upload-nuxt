@@ -1,10 +1,7 @@
 <script setup>
 import { store } from './src/store'
-import WaitUploadFiles from './src/components/WaitUpload.vue'
 import FileCard from './src/components/FileCard.vue'
 import Tab from './src/components/Tab.vue'
-import ProgressBar from './src/components/ProgressBar.vue'
-
 
 const filteredFiles = computed(() => {
     return store.files.filter(file => !store.selectShowStatus || file.status === store.selectShowStatus)
@@ -26,7 +23,7 @@ function onFile(e) {
     </div>
 </template>
 
-<style>
+<style >
 .container {
     position: relative;
     min-width: 100px;
@@ -36,9 +33,9 @@ function onFile(e) {
     align-items: center;
     margin: 0 auto;
     height: 30vh;
-    border: 1px solid gray;
-    border-radius: 4px;
+    border-radius: 16px;
     transition: .4s all;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.3), -8px -8px 8px rgba(255, 255, 255, 0.7);
 }
 
 .container input {
@@ -55,12 +52,6 @@ function onFile(e) {
     margin-top: -10px;
 }
 
-
-.container:hover {
-    border: 1px solid cadetblue;
-}
-
-
 body {
     margin: 0;
     height: 100vh;
@@ -68,5 +59,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f1f1f1;
 }
 </style>
