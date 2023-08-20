@@ -55,6 +55,11 @@ export const store = reactive<Store>({
       name: files.name,
     });
   },
+  /**
+   * 更新文件上传进度 
+   * @param i 文件的索引
+   * @param progress 需要更新的进度
+   */
   updateFileUploadProgress(i, progress) {
     this.files[i].uploadProgress = progress;
   },

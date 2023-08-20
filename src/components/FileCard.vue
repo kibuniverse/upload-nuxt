@@ -3,6 +3,7 @@ import { fileStatusConfigMap } from '../utils/config';
 import { FileStatus } from '../store/index'
 import ProgressBar from './ProgressBar.vue';
 import { store } from '../store/index';
+
 const props = defineProps<{
     id: string;
     status: FileStatus;
@@ -83,6 +84,7 @@ function onPause() {
     align-items: center;
     border-bottom: 1px solid #d6cccc;
     margin-bottom: 8px;
+    transition: all 0.3s;
 }
 
 .button {

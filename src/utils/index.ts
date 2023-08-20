@@ -34,6 +34,13 @@ export function createChunkList(files: File, chunkSize: number) {
   return fileChunkList;
 }
 
+/**
+ * 上传文件
+ * @param _formData 文件表单
+ * @param onProgress 上传进度回调
+ * @param onCompleted 上传完成回调
+ * @param onerror ​上传失败回调
+ */
 export function uploadFile(
   _formData: Record<string, any>,
   onProgress: (e: number) => void,
