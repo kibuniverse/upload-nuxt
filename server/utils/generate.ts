@@ -5,7 +5,6 @@ export function genSuccessResponse<T = Record<string, any>>(data: T) {
     status: Status.Success,
     ...data,
   } as { status: Status.Error } & T;
-  ;
 }
 export function genErrorResponse<T = Record<string, any>>(data: T) {
   return {
